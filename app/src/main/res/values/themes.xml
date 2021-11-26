@@ -11,10 +11,12 @@
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:statusBarColor">@color/main_blue</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="WebviewTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="WebViewTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/sub_gray</item>
         <item name="android:statusBarColor">@color/sub_gray</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

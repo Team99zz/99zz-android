@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         init()
+        initWebView()
 
         viewModel.url.observe(this) { url ->
             binding.mainWb.loadUrl(url)
@@ -32,5 +33,15 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+    }
+
+    private fun initWebView() {
+        binding.mainWb.apply {
+            webViewClient = WebViewClient()
+            settings.javaScriptEnabled = true
+            settings.userAgentString =
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
+            settings.setSupportZoom(false)
+        }
     }
 }
