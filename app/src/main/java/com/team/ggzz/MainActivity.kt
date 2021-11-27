@@ -1,7 +1,10 @@
 package com.team.ggzz
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         loadingSpinner.show(this)
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
         binding.mainWb.apply {
             webViewClient = object : WebViewClient() {
@@ -54,7 +58,13 @@ class MainActivity : AppCompatActivity() {
             settings.javaScriptEnabled = true
             settings.userAgentString =
                 "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
+            settings.textZoom = 100
             settings.setSupportZoom(false)
+
+            addJavascriptInterface(
+                WebViewInterface(this@MainActivity),
+                "Android"
+            )
         }
     }
 }
